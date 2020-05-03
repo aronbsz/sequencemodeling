@@ -14,22 +14,21 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Message">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceComponent" eType="#//Component"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetComponent" eType="#//Component"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Component"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Component"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//MessageContent"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageContent" eSuperTypes="#//NamedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CombinedFragment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CombinedFragment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operands" upperBound="-1"
+        eType="#//Operand" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Operand">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interaction" eType="#//Interaction"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AltFragment" eSuperTypes="#//CombinedFragment">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operands" upperBound="-1"
-        eType="#//Operand" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OptFragment" eSuperTypes="#//CombinedFragment">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operand" eType="#//Operand"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AltFragment" eSuperTypes="#//CombinedFragment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OptFragment" eSuperTypes="#//CombinedFragment"/>
 </ecore:EPackage>

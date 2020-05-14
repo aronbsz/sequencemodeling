@@ -11,7 +11,7 @@
       <package
             uri="hu.bme.mit.sequencediagram.graphical"
             class="graphical.GraphicalPackage"
-            genModel="graphical.genmodel"/>
+            genModel="model/graphical.genmodel"/>
    </extension>
 
 </plugin>

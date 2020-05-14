@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/hu.bme.mit.sequencediagram.graphical.model/src"
+    modelPluginID="hu.bme.mit.sequencediagram.graphical.model" modelName="Graphical"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>model/graphical.ecore</foreignModel>
+  <genPackages prefix="Graphical" disposableProviderFactory="true" ecorePackage="graphical.ecore#/">
+    <genClasses ecoreClass="graphical.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graphical.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="graphical.ecore#//Interaction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Interaction/components"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Interaction/messages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Interaction/combinedFragments"/>
+    </genClasses>
+    <genClasses ecoreClass="graphical.ecore#//Component"/>
+    <genClasses ecoreClass="graphical.ecore#//Message">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/content"/>
+    </genClasses>
+    <genClasses ecoreClass="graphical.ecore#//MessageContent"/>
+    <genClasses ecoreClass="graphical.ecore#//CombinedFragment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//CombinedFragment/operands"/>
+    </genClasses>
+    <genClasses ecoreClass="graphical.ecore#//Operand">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graphical.ecore#//Operand/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Operand/interaction"/>
+    </genClasses>
+    <genClasses ecoreClass="graphical.ecore#//AltFragment"/>
+    <genClasses ecoreClass="graphical.ecore#//OptFragment"/>
+  </genPackages>
+</genmodel:GenModel>

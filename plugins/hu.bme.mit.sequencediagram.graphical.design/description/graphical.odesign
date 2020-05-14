@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="graphical" version="12.0.0.2017041100">
+  <ownedViewpoints name="InteractionModeling" label="Interaction Modeling">
+    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" name="AutomatonSequenceDiagram" label="Automaton Sequence Diagram" domainClass="Interaction" enablePopupBars="true" endsOrdering="feature:messages">
+      <metamodel href="../../hu.bme.mit.sequencediagram.graphical.model/graphical.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="Component" semanticCandidatesExpression="feature:components" synchronizationLock="true" domainClass="graphical.Component">
+          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.Component" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
+            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="3" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="40">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:self.name" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="12" height="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="Nodes">
+          <ownedTools xsi:type="tool:InstanceRoleCreationTool" name="Component" nodeMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='Component']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.Component" referenceName="components">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newComponent' + self.eContainer(interactions::Interaction).components->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <predecessor name="predecessor"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_2:NodeCreationDescription">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="hu.bme.mit.sequencediagram.graphical.design.Services"/>
+  </ownedViewpoints>
+</description:Group>

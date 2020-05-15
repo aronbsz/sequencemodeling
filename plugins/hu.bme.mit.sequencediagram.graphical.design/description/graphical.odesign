@@ -5,9 +5,37 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <metamodel href="../../hu.bme.mit.sequencediagram.graphical.model/model/graphical.ecore#/"/>
       <defaultLayer name="Default">
-        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="Component" semanticCandidatesExpression="feature:components" synchronizationLock="true" domainClass="graphical.Component">
-          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.Component" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
-            <style xsi:type="style:SquareDescription" borderSizeComputationExpression="3" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="40">
+        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="InputComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.InputComponent">
+          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="graphical.InputComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="40">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="20" height="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="OutputComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.OutputComponent">
+          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="graphical.OutputComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="" resizeKind="NSEW" width="1" height="40">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="20" height="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="SystemComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.SystemComponent">
+          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="graphical.SystemComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="" resizeKind="NSEW" width="1" height="40">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -19,7 +47,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
-        <edgeMappings xsi:type="description_1:BasicMessageMapping" name="Message" semanticCandidatesExpression="feature:messages" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='Component']/@borderedNodeMappings[name='Lifeline']" targetMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='Component']/@borderedNodeMappings[name='Lifeline']" targetFinderExpression="aql:self.targetEvent.context" sourceFinderExpression="aql:self.sourceEvent.context" domainClass="graphical.Message" useDomainElement="true" sendingEndFinderExpression="feature:sourceEvent" receivingEndFinderExpression="feature:targetEvent">
+        <edgeMappings xsi:type="description_1:BasicMessageMapping" name="Message" semanticCandidatesExpression="feature:messages" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='InputComponent']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='SystemComponent']/@borderedNodeMappings[name='Lifeline']" targetMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='OutputComponent']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='SystemComponent']/@borderedNodeMappings[name='Lifeline']" targetFinderExpression="aql:self.targetEvent.context" sourceFinderExpression="aql:self.sourceEvent.context" domainClass="graphical.Message" useDomainElement="true" sendingEndFinderExpression="feature:sourceEvent" receivingEndFinderExpression="feature:targetEvent">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.content.name">
@@ -45,14 +73,42 @@
           </style>
         </containerMappings>
         <toolSections name="Components">
-          <ownedTools xsi:type="tool:InstanceRoleCreationTool" name="Component" nodeMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='Component']">
+          <ownedTools xsi:type="tool:InstanceRoleCreationTool" name="InputComponent" nodeMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='InputComponent']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.Component" referenceName="components">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.InputComponent" referenceName="components">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newComponent' + instance.eContainer(graphical::Interaction).components->size()"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="inputComponent"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <predecessor name="predecessor"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:InstanceRoleCreationTool" name="OutputComponent" nodeMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='OutputComponent']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.OutputComponent" referenceName="components">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="outputComponent"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <predecessor name="predecessor"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:InstanceRoleCreationTool" name="SystemComponent" nodeMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='SystemComponent']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.SystemComponent" referenceName="components">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="systemComponent"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>

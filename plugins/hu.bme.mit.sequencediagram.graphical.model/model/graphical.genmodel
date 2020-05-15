@@ -16,6 +16,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Interaction/events"/>
     </genClasses>
     <genClasses ecoreClass="graphical.ecore#//Component"/>
+    <genClasses ecoreClass="graphical.ecore#//InputComponent"/>
+    <genClasses ecoreClass="graphical.ecore#//OutputComponent"/>
+    <genClasses ecoreClass="graphical.ecore#//SystemComponent"/>
     <genClasses ecoreClass="graphical.ecore#//Message">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/sourceEvent"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/targetEvent"/>

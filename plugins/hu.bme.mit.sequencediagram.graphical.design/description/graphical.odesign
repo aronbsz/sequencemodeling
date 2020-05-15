@@ -27,6 +27,23 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
+        <containerMappings xsi:type="description_1:CombinedFragmentMapping" name="OptFragment" label="Opt Fragment" preconditionExpression="aql:not self.startEvent.context->isEmpty()" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.OptFragment" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="feature:finishEvent" coveredLifelinesExpression="aql:self.startEvent.context">
+          <subContainerMappings xsi:type="description_1:OperandMapping" name="Operand" semanticCandidatesExpression="feature:operands" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.Operand" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="aql:self.eContainer().finishEvent">
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="operand" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" showIcon="false" labelExpression="opt" labelAlignment="LEFT">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+        </containerMappings>
         <toolSections name="Components">
           <ownedTools xsi:type="tool:InstanceRoleCreationTool" name="Component" nodeMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='Component']">
             <variable name="container"/>
@@ -76,6 +93,43 @@
             </initialOperation>
             <startingEndPredecessor name="startingEndPredecessor"/>
             <finishingEndPredecessor name="finishingEndPredecessor"/>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="ControlFlow" label="Control Flow">
+          <ownedTools xsi:type="tool:CombinedFragmentCreationTool" name="OptFragment" containerMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@containerMappings[name='OptFragment']" extraMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@containerMappings[name='OptFragment']/@subContainerMappings[name='Operand']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(graphical::Interaction)">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.OptFragment" referenceName="combinedFragments" variableName="cf">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.Operand" referenceName="operands" variableName="op">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="expression" valueExpression="emptyOperand"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.CombinedFragmentEvent" referenceName="events" variableName="startCf">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:coverage"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="combinedFragment" valueExpression="var:cf"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.CombinedFragmentEvent" referenceName="events" variableName="finishCf">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:coverage"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="combinedFragment" valueExpression="var:cf"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.OperandEvent" referenceName="events" variableName="startOp">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:coverage"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="operand" valueExpression="var:op"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:cf">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="startEvent" valueExpression="var:startCf"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="finishEvent" valueExpression="var:finishCf"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:op">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="startEvent" valueExpression="var:startOp"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <startingEndPredecessor name="startingEndPredecessor"/>
+            <finishingEndPredecessor name="finishingEndPredecessor"/>
+            <coveredLifelines name="coverage"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>

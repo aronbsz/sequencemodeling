@@ -24,10 +24,12 @@
     <genClasses ecoreClass="graphical.ecore#//MessageContent"/>
     <genClasses ecoreClass="graphical.ecore#//CombinedFragment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//CombinedFragment/operands"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//CombinedFragment/startEvent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//CombinedFragment/finishEvent"/>
     </genClasses>
     <genClasses ecoreClass="graphical.ecore#//Operand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graphical.ecore#//Operand/expression"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Operand/interaction"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Operand/startEvent"/>
     </genClasses>
     <genClasses ecoreClass="graphical.ecore#//AltFragment"/>
     <genClasses ecoreClass="graphical.ecore#//OptFragment"/>
@@ -36,6 +38,12 @@
     </genClasses>
     <genClasses ecoreClass="graphical.ecore#//MessageEvent">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//MessageEvent/message"/>
+    </genClasses>
+    <genClasses ecoreClass="graphical.ecore#//CombinedFragmentEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//CombinedFragmentEvent/combinedFragment"/>
+    </genClasses>
+    <genClasses ecoreClass="graphical.ecore#//OperandEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//OperandEvent/operand"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

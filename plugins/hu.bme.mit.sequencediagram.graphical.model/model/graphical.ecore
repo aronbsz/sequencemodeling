@@ -11,11 +11,13 @@
         eType="#//Message" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="combinedFragments" upperBound="-1"
         eType="#//CombinedFragment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
+        eType="#//Event" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Message">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Component"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Component"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceEvent" eType="#//MessageEvent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetEvent" eType="#//MessageEvent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//MessageContent"
         containment="true"/>
   </eClassifiers>
@@ -31,4 +33,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AltFragment" eSuperTypes="#//CombinedFragment"/>
   <eClassifiers xsi:type="ecore:EClass" name="OptFragment" eSuperTypes="#//CombinedFragment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Event" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//Component"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageEvent" eSuperTypes="#//Event">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="message" eType="#//Message"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -13,11 +13,12 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Interaction/components"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Interaction/messages"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Interaction/combinedFragments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Interaction/events"/>
     </genClasses>
     <genClasses ecoreClass="graphical.ecore#//Component"/>
     <genClasses ecoreClass="graphical.ecore#//Message">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/source"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/sourceEvent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/targetEvent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/content"/>
     </genClasses>
     <genClasses ecoreClass="graphical.ecore#//MessageContent"/>
@@ -30,5 +31,11 @@
     </genClasses>
     <genClasses ecoreClass="graphical.ecore#//AltFragment"/>
     <genClasses ecoreClass="graphical.ecore#//OptFragment"/>
+    <genClasses image="false" ecoreClass="graphical.ecore#//Event">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Event/context"/>
+    </genClasses>
+    <genClasses ecoreClass="graphical.ecore#//MessageEvent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//MessageEvent/message"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

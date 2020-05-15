@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="graphical" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="graphical" version="12.0.0.2017041100">
   <ownedViewpoints name="InteractionModeling" label="Interaction Modeling">
-    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" name="AutomatonSequenceDiagram" label="Automaton Sequence Diagram" domainClass="Interaction" enablePopupBars="true" endsOrdering="feature:messages">
+    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" name="AutomatonSequenceDiagram" label="Automaton Sequence Diagram" domainClass="Interaction" enablePopupBars="true" endsOrdering="feature:events">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <metamodel href="../../hu.bme.mit.sequencediagram.graphical.model/model/graphical.ecore#/"/>
       <defaultLayer name="Default">
@@ -13,33 +13,73 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="aql:self.name" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="12" height="5">
+          <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="20" height="5">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
-        <toolSections name="Nodes">
+        <edgeMappings xsi:type="description_1:BasicMessageMapping" name="Message" semanticCandidatesExpression="feature:messages" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='Component']/@borderedNodeMappings[name='Lifeline']" targetMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='Component']/@borderedNodeMappings[name='Lifeline']" targetFinderExpression="aql:self.targetEvent.context" sourceFinderExpression="aql:self.sourceEvent.context" domainClass="graphical.Message" useDomainElement="true" sendingEndFinderExpression="feature:sourceEvent" receivingEndFinderExpression="feature:targetEvent">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.content.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Components">
           <ownedTools xsi:type="tool:InstanceRoleCreationTool" name="Component" nodeMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='Component']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.Component" referenceName="components">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newComponent' + self.eContainer(interactions::Interaction).components->size()"/>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newComponent' + instance.eContainer(graphical::Interaction).components->size()"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
             <predecessor name="predecessor"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_2:NodeCreationDescription">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation/>
+        </toolSections>
+        <toolSections name="Messages">
+          <ownedTools xsi:type="tool:MessageCreationTool" name="Message" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@edgeMappings[name='Message']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer(graphical::Interaction)">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.Message" referenceName="messages" variableName="message">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:message">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.MessageContent" referenceName="content" variableName="messageContent">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:messageContent">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="empty"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.MessageEvent" referenceName="events" variableName="sendingEvent">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:message"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.MessageEvent" referenceName="events" variableName="receivingEvent">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:message"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:message">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceEvent" valueExpression="var:sendingEvent"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="targetEvent" valueExpression="var:receivingEvent"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <startingEndPredecessor name="startingEndPredecessor"/>
+            <finishingEndPredecessor name="finishingEndPredecessor"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
-      <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+      <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="hu.bme.mit.sequencediagram.graphical.design.Services"/>
   </ownedViewpoints>

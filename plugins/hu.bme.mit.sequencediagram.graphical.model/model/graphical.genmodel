@@ -5,7 +5,8 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>graphical.ecore</foreignModel>
-  <genPackages prefix="Graphical" disposableProviderFactory="true" ecorePackage="graphical.ecore#/">
+  <genPackages prefix="Graphical" basePackage="hu.bme.mit.sequencediagram" disposableProviderFactory="true"
+      ecorePackage="graphical.ecore#/">
     <genClasses ecoreClass="graphical.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graphical.ecore#//NamedElement/name"/>
     </genClasses>

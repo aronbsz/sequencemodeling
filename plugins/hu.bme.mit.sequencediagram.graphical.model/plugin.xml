@@ -10,7 +10,7 @@
       <!-- @generated graphical -->
       <package
             uri="hu.bme.mit.sequencediagram.graphical.model"
-            class="model.GraphicalPackage"
+            class="hu.bme.mit.sequencediagram.model.GraphicalPackage"
             genModel="model/graphical.genmodel"/>
    </extension>
 

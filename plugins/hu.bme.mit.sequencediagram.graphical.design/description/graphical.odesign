@@ -5,8 +5,8 @@
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <metamodel href="../../hu.bme.mit.sequencediagram.graphical.model/model/graphical.ecore#/"/>
       <defaultLayer name="Default">
-        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="InputComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.InputComponent">
-          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="graphical.InputComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
+        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="InputComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="model.InputComponent">
+          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="model.InputComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
             <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="40">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -19,8 +19,8 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="OutputComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.OutputComponent">
-          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="graphical.OutputComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
+        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="OutputComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="model.OutputComponent">
+          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="model.OutputComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
             <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="" resizeKind="NSEW" width="1" height="40">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -33,8 +33,8 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="SystemComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.SystemComponent">
-          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="graphical.SystemComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
+        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="SystemComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="model.SystemComponent">
+          <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="model.SystemComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
             <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="" resizeKind="NSEW" width="1" height="40">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -47,7 +47,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </nodeMappings>
-        <edgeMappings xsi:type="description_1:BasicMessageMapping" name="Message" semanticCandidatesExpression="feature:messages" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='InputComponent']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='SystemComponent']/@borderedNodeMappings[name='Lifeline']" targetMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='OutputComponent']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='SystemComponent']/@borderedNodeMappings[name='Lifeline']" targetFinderExpression="aql:self.targetEvent.context" sourceFinderExpression="aql:self.sourceEvent.context" domainClass="graphical.Message" useDomainElement="true" sendingEndFinderExpression="feature:sourceEvent" receivingEndFinderExpression="feature:targetEvent">
+        <edgeMappings xsi:type="description_1:BasicMessageMapping" name="Message" semanticCandidatesExpression="feature:messages" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='InputComponent']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='SystemComponent']/@borderedNodeMappings[name='Lifeline']" targetMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='OutputComponent']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='SystemComponent']/@borderedNodeMappings[name='Lifeline']" targetFinderExpression="aql:self.targetEvent.context" sourceFinderExpression="aql:self.sourceEvent.context" domainClass="model.Message" useDomainElement="true" sendingEndFinderExpression="feature:sourceEvent" receivingEndFinderExpression="feature:targetEvent">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.content.name">
@@ -55,8 +55,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings xsi:type="description_1:CombinedFragmentMapping" name="OptFragment" label="Opt Fragment" preconditionExpression="aql:not self.startEvent.context->isEmpty()" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.OptFragment" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="feature:finishEvent" coveredLifelinesExpression="aql:self.startEvent.context">
-          <subContainerMappings xsi:type="description_1:OperandMapping" name="Operand" semanticCandidatesExpression="feature:operands" semanticElements="var:self" synchronizationLock="true" domainClass="graphical.Operand" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="aql:self.eContainer().finishEvent">
+        <containerMappings xsi:type="description_1:CombinedFragmentMapping" name="OptFragment" label="Opt Fragment" preconditionExpression="aql:not self.startEvent.context->isEmpty()" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" synchronizationLock="true" domainClass="model.OptFragment" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="feature:finishEvent" coveredLifelinesExpression="aql:self.startEvent.context">
+          <subContainerMappings xsi:type="description_1:OperandMapping" name="Operand" semanticCandidatesExpression="feature:operands" semanticElements="var:self" synchronizationLock="true" domainClass="model.Operand" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="aql:self.eContainer().finishEvent">
             <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="operand" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
@@ -72,7 +72,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <containerMappings xsi:type="description_1:InteractionUseMapping" name="InteractionUse" label="Interaction Use" preconditionExpression="aql:not self.startEvent.context->isEmpty()" semanticCandidatesExpression="feature:eAllContents" semanticElements="self->asSet()->union(self.interaction->asSet())" synchronizationLock="true" domainClass="graphical.InteractionUse" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="feature:finishEvent" coveredLifelinesExpression="aql:self.startEvent.context" centerLabelExpression="aql:if self.interaction.name=null then 'empty interaction' else self.interaction.name endif">
+        <containerMappings xsi:type="description_1:InteractionUseMapping" name="InteractionUse" label="Interaction Use" preconditionExpression="aql:not self.startEvent.context->isEmpty()" semanticCandidatesExpression="feature:eAllContents" semanticElements="self->asSet()->union(self.interaction->asSet())" synchronizationLock="true" domainClass="model.InteractionUse" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="feature:finishEvent" coveredLifelinesExpression="aql:self.startEvent.context" centerLabelExpression="aql:if self.interaction.name=null then 'empty interaction' else self.interaction.name endif">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="ref" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -87,7 +87,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.InputComponent" referenceName="components">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.InputComponent" referenceName="components">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="inputComponent"/>
                   </subModelOperations>
@@ -101,7 +101,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.OutputComponent" referenceName="components">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.OutputComponent" referenceName="components">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="outputComponent"/>
                   </subModelOperations>
@@ -115,7 +115,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.SystemComponent" referenceName="components">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.SystemComponent" referenceName="components">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instance">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="systemComponent"/>
                   </subModelOperations>
@@ -132,27 +132,39 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer(graphical::Interaction)">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.Message" referenceName="messages" variableName="message">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer(model::Interaction)">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.Message" referenceName="messages" variableName="message">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:message">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.MessageContent" referenceName="content" variableName="messageContent">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.MessageContent" referenceName="content" variableName="messageContent">
                       <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:messageContent">
                         <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="empty"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.MessageEvent" referenceName="events" variableName="sendingEvent">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.MessageEvent" referenceName="events" variableName="sendingEvent">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:source"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:message"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.MessageEvent" referenceName="events" variableName="receivingEvent">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.MessageEvent" referenceName="events" variableName="receivingEvent">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="message" valueExpression="var:message"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:message">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="sourceEvent" valueExpression="var:sendingEvent"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="targetEvent" valueExpression="var:receivingEvent"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="moveSendingEvent" id="org.eclipse.sirius.business.api.action.moveElement">
+                  <parameters name="referenceOwner" value="var:self"/>
+                  <parameters name="referenceName" value="events"/>
+                  <parameters name="element" value="var:sendingEvent"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="moveReceivingEvent" id="org.eclipse.sirius.business.api.action.moveElement">
+                  <parameters name="referenceOwner" value="var:self"/>
+                  <parameters name="referenceName" value="events"/>
+                  <parameters name="element" value="var:receivingEvent"/>
+                  <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -165,21 +177,21 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(graphical::Interaction)">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.OptFragment" referenceName="combinedFragments" variableName="cf">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.Operand" referenceName="operands" variableName="op">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(model::Interaction)">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.OptFragment" referenceName="combinedFragments" variableName="cf">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.Operand" referenceName="operands" variableName="op">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="expression" valueExpression="emptyOperand"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.CombinedFragmentEvent" referenceName="events" variableName="startCf">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.CombinedFragmentEvent" referenceName="events" variableName="startCf">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:coverage"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="combinedFragment" valueExpression="var:cf"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.CombinedFragmentEvent" referenceName="events" variableName="finishCf">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.CombinedFragmentEvent" referenceName="events" variableName="finishCf">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:coverage"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="combinedFragment" valueExpression="var:cf"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.OperandEvent" referenceName="events" variableName="startOp">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.OperandEvent" referenceName="events" variableName="startOp">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:coverage"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="operand" valueExpression="var:op"/>
                 </subModelOperations>
@@ -189,6 +201,24 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:op">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="startEvent" valueExpression="var:startOp"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="moveFinishCf" id="org.eclipse.sirius.business.api.action.moveElement">
+                  <parameters name="referenceOwner" value="var:self"/>
+                  <parameters name="referenceName" value="events"/>
+                  <parameters name="element" value="var:finishCf"/>
+                  <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="moveStartOp" id="org.eclipse.sirius.business.api.action.moveElement">
+                  <parameters name="referenceOwner" value="var:self"/>
+                  <parameters name="referenceName" value="events"/>
+                  <parameters name="element" value="var:startOp"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="moveStartCf" id="org.eclipse.sirius.business.api.action.moveElement">
+                  <parameters name="referenceOwner" value="var:self"/>
+                  <parameters name="referenceName" value="events"/>
+                  <parameters name="element" value="var:startCf"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -200,23 +230,35 @@
             <variable name="container"/>
             <viewVariable name="viewContainer"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(graphical::Interaction)">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.InteractionUse" referenceName="interactionUses" variableName="iu">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(model::Interaction)">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.InteractionUse" referenceName="interactionUses" variableName="iu">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:iu">
                     <subModelOperations xsi:type="tool_1:SetValue" featureName="interaction" valueExpression="aql:self.eContainer(graphical::Interaction)"/>
                   </subModelOperations>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.InteractionUseEvent" referenceName="events" variableName="startIu">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.InteractionUseEvent" referenceName="events" variableName="startIu">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:coverage"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="interactionUse" valueExpression="var:iu"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.InteractionUseEvent" referenceName="events" variableName="finishIu">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.InteractionUseEvent" referenceName="events" variableName="finishIu">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:coverage"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="interactionUse" valueExpression="var:iu"/>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:iu">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="startEvent" valueExpression="var:startIu"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="finishEvent" valueExpression="var:finishIu"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="moveFinishIu" id="org.eclipse.sirius.business.api.action.moveElement">
+                  <parameters name="referenceOwner" value="var:self"/>
+                  <parameters name="referenceName" value="events"/>
+                  <parameters name="element" value="var:finishIu"/>
+                  <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="moveStartIu" id="org.eclipse.sirius.business.api.action.moveElement">
+                  <parameters name="referenceOwner" value="var:self"/>
+                  <parameters name="referenceName" value="events"/>
+                  <parameters name="element" value="var:startIu"/>
+                  <parameters name="predecessor" value="aql:startingEndPredecessor.semanticEnd"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -229,5 +271,6 @@
       <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="hu.bme.mit.sequencediagram.graphical.design.Services"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.business.api.action.moveElement"/>
   </ownedViewpoints>
 </description:Group>

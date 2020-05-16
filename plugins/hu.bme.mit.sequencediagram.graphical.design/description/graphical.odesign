@@ -72,6 +72,15 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
+        <containerMappings xsi:type="description_1:InteractionUseMapping" name="InteractionUse" label="Interaction Use" preconditionExpression="aql:not self.startEvent.context->isEmpty()" semanticCandidatesExpression="feature:eAllContents" semanticElements="self->asSet()->union(self.interaction->asSet())" synchronizationLock="true" domainClass="graphical.InteractionUse" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="feature:finishEvent" coveredLifelinesExpression="aql:self.startEvent.context" centerLabelExpression="aql:if self.interaction.name=null then 'empty interaction' else self.interaction.name endif">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="ref" labelAlignment="LEFT">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+        </containerMappings>
         <toolSections name="Components">
           <ownedTools xsi:type="tool:InstanceRoleCreationTool" name="InputComponent" nodeMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='InputComponent']">
             <variable name="container"/>
@@ -180,6 +189,34 @@
                 </subModelOperations>
                 <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:op">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="startEvent" valueExpression="var:startOp"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <startingEndPredecessor name="startingEndPredecessor"/>
+            <finishingEndPredecessor name="finishingEndPredecessor"/>
+            <coveredLifelines name="coverage"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:InteractionUseCreationTool" name="InteractionUse" containerMappings="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@containerMappings[name='InteractionUse']">
+            <variable name="container"/>
+            <viewVariable name="viewContainer"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eContainerOrSelf(graphical::Interaction)">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.InteractionUse" referenceName="interactionUses" variableName="iu">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:iu">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="interaction" valueExpression="aql:self.eContainer(graphical::Interaction)"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.InteractionUseEvent" referenceName="events" variableName="startIu">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:coverage"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="interactionUse" valueExpression="var:iu"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="graphical.InteractionUseEvent" referenceName="events" variableName="finishIu">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="context" valueExpression="var:coverage"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="interactionUse" valueExpression="var:iu"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:iu">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="startEvent" valueExpression="var:startIu"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="finishEvent" valueExpression="var:finishIu"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

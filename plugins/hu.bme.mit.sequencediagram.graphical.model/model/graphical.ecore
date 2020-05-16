@@ -13,6 +13,8 @@
         eType="#//CombinedFragment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
         eType="#//Event" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interactionUses" upperBound="-1"
+        eType="#//InteractionUse" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="InputComponent" eSuperTypes="#//Component"/>
@@ -37,6 +39,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AltFragment" eSuperTypes="#//CombinedFragment"/>
   <eClassifiers xsi:type="ecore:EClass" name="OptFragment" eSuperTypes="#//CombinedFragment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InteractionUse">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interaction" eType="#//Interaction"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="startEvent" eType="#//InteractionUseEvent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="finishEvent" eType="#//InteractionUseEvent"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" upperBound="-1"
         eType="#//Component"/>
@@ -49,5 +56,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperandEvent" eSuperTypes="#//Event">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operand" eType="#//Operand"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InteractionUseEvent" eSuperTypes="#//Event">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interactionUse" eType="#//InteractionUse"/>
   </eClassifiers>
 </ecore:EPackage>

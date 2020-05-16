@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="graphical" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="graphical" version="12.0.0.2017041100">
   <ownedViewpoints name="InteractionModeling" label="Interaction Modeling">
     <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" name="AutomatonSequenceDiagram" label="Automaton Sequence Diagram" domainClass="Interaction" enablePopupBars="true" endsOrdering="feature:events">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <metamodel href="../../hu.bme.mit.sequencediagram.graphical.model/model/graphical.ecore#/"/>
       <defaultLayer name="Default">
+        <nodeMappings name="RootInteraction" labelDirectEdit="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='EditRootInteractionLabel']" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="model.Interaction">
+          <style xsi:type="style:SquareDescription" labelSize="12" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="20" height="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>underline</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
         <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="InputComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="model.InputComponent">
           <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="model.InputComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
             <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" labelExpression="" resizeKind="NSEW" width="1" height="40">
@@ -33,7 +41,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="SystemComponent" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="model.SystemComponent">
+        <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="SystemComponent" labelDirectEdit="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='EditSystemComponentLabel']" semanticCandidatesExpression="feature:components" semanticElements="var:self" synchronizationLock="true" domainClass="model.SystemComponent">
           <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="Lifeline" semanticCandidatesExpression="var:self" synchronizationLock="true" domainClass="model.SystemComponent" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
             <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="" resizeKind="NSEW" width="1" height="40">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
@@ -72,7 +80,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <containerMappings xsi:type="description_1:InteractionUseMapping" name="InteractionUse" label="Interaction Use" preconditionExpression="aql:not self.startEvent.context->isEmpty()" semanticCandidatesExpression="feature:eAllContents" semanticElements="self->asSet()->union(self.interaction->asSet())" synchronizationLock="true" domainClass="model.InteractionUse" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="feature:finishEvent" coveredLifelinesExpression="aql:self.startEvent.context" centerLabelExpression="aql:if self.interaction.name=null then 'empty interaction' else self.interaction.name endif">
+        <containerMappings xsi:type="description_1:InteractionUseMapping" name="InteractionUse" label="Interaction Use" preconditionExpression="aql:not self.startEvent.context->isEmpty()" labelDirectEdit="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='EditIuLabel']" semanticCandidatesExpression="feature:eAllContents" semanticElements="self->asSet()->union(self.interaction->asSet())" synchronizationLock="true" domainClass="model.InteractionUse" startingEndFinderExpression="feature:startEvent" finishingEndFinderExpression="feature:finishEvent" coveredLifelinesExpression="aql:self.startEvent.context" centerLabelExpression="aql:if self.interaction=null then self.interactionName + ' (unknown)' else self.interactionName endif">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="ref" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -267,6 +275,34 @@
             <coveredLifelines name="coverage"/>
           </ownedTools>
         </toolSections>
+        <toolSections name="EditLabelFunctionality">
+          <ownedTools xsi:type="tool_2:DirectEditLabel" name="EditRootInteractionLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_2:DirectEditLabel" name="EditSystemComponentLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_2:DirectEditLabel" name="EditIuLabel">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="interactionName" valueExpression="var:arg0"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="interaction" valueExpression="aql:self.eContainer(model::Model).interactions->select(x|x.name==self.interactionName)->first()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="DeleteElementFunctionality"/>
       </defaultLayer>
       <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
     </ownedRepresentations>

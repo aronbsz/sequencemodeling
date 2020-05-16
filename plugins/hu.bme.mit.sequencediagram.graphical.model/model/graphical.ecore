@@ -44,6 +44,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="AltFragment" eSuperTypes="#//CombinedFragment"/>
   <eClassifiers xsi:type="ecore:EClass" name="OptFragment" eSuperTypes="#//CombinedFragment"/>
   <eClassifiers xsi:type="ecore:EClass" name="InteractionUse">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interactionName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interaction" eType="#//Interaction"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="startEvent" eType="#//InteractionUseEvent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="finishEvent" eType="#//InteractionUseEvent"/>

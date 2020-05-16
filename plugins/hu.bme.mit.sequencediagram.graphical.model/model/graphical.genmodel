@@ -42,6 +42,7 @@
     <genClasses ecoreClass="graphical.ecore#//AltFragment"/>
     <genClasses ecoreClass="graphical.ecore#//OptFragment"/>
     <genClasses ecoreClass="graphical.ecore#//InteractionUse">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graphical.ecore#//InteractionUse/interactionName"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//InteractionUse/interaction"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//InteractionUse/startEvent"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//InteractionUse/finishEvent"/>

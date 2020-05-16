@@ -15,9 +15,15 @@ Pro tip: delete the generated files and folders before re-generating them.
 - In the *Runtime Eclipse* create a new *Sirius Modeling Project* (*File -> New -> Other -> Sirius -> Modeling Project*)
 - Create a corresponding EMF model in that project (*File -> New ->  Other -> Example EMF Model Creation Wizards -> Graphical Model*)
 - Choose a file name and select the previously created (project) folder
-- Select **Interaction** as *Model Object*, then hit *Finish*
-- Open the *representations.aird* file, and in the *Representations* tab select the *Automaton Sequence Diagram* element (under *Interaction Modeling*)
-- Hit *New* -> select *Automaton Sequence Diagram* -> *Next* -> select *Interaction* -> *Finish* -> choose a name for the representation 
+- Select **Model** as *Model Object*, then hit *Finish*
+- Open the *representations.aird* file, in the Models tab, right click on the *Model* object under *<filename>.graphical* -> *New Child* -> *Interaction*
+- In the *Representations* tab select the *Automaton Sequence Diagram* element (under *Interaction Modeling*)
+- Hit *New* -> select *Automaton Sequence Diagram* -> *Next* -> select (the previously created) *Interaction* -> *Finish* -> choose a name for the representation 
 - Open the newly created representation
 - Happy Modeling ;)
 
+### Modeling tips
+- You can create new interaction models as described in the previous section (in the .aird file right click on *Model* -> ...)
+- You can create representations for each Interaction, but not the Model itself (that represents the system modeled through all the sequence diagrams)
+- Each sequence diagram has a node (initially in the top left corner) that represents the diagram itself. You can change its name through this element but should not delete it.
+- *Interactions* can refer to (use) other interactions under the same *Model* element using their names in *Interaction Use* elements.

@@ -9,6 +9,9 @@
     <genClasses ecoreClass="graphical.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graphical.ecore#//NamedElement/name"/>
     </genClasses>
+    <genClasses ecoreClass="graphical.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Model/interactions"/>
+    </genClasses>
     <genClasses ecoreClass="graphical.ecore#//Interaction">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Interaction/components"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Interaction/messages"/>

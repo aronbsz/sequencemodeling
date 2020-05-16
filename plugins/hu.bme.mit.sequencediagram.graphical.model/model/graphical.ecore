@@ -4,17 +4,21 @@
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interactions" ordered="false"
+        upperBound="-1" eType="#//Interaction" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Interaction" eSuperTypes="#//NamedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
-        eType="#//Component" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="messages" upperBound="-1"
-        eType="#//Message" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="combinedFragments" upperBound="-1"
-        eType="#//CombinedFragment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="components" ordered="false"
+        upperBound="-1" eType="#//Component" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messages" ordered="false"
+        upperBound="-1" eType="#//Message" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="combinedFragments" ordered="false"
+        upperBound="-1" eType="#//CombinedFragment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
         eType="#//Event" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="interactionUses" upperBound="-1"
-        eType="#//InteractionUse" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interactionUses" ordered="false"
+        upperBound="-1" eType="#//InteractionUse" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="InputComponent" eSuperTypes="#//Component"/>

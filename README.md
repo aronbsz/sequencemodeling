@@ -17,7 +17,7 @@ Pro tip: delete the generated files and folders before re-generating them.
 - Choose a file name and select the previously created (project) folder
 - Select **Interaction** as *Model Object*, then hit *Finish*
 - Open the *representations.aird* file, and in the *Representations* tab select the *Automaton Sequence Diagram* element (under *Interaction Modeling*)
-- Hit *New* -> select *Automaton Sequence Diagram* -> *Next* -> select *Interaction* -> *Finish* -> *Choose a name* 
+- Hit *New* -> select *Automaton Sequence Diagram* -> *Next* -> select *Interaction* -> *Finish* -> choose a name for the representation 
 - Open the newly created representation
 - Happy Modeling ;)
 

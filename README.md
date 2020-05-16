@@ -8,5 +8,15 @@
 - Generate Editor Code (on the root element in *graphical.genmodel*)
 - Launch a Runtime Eclipse by starting the *hu.bme.mit.sequencediagram.graphical.design* project as an Eclipse Application
 - Have Fun!
-
 Pro tip: delete the generated files and folders before re-generating them.
+
+### Example Model Setup
+- In the *Runtime Eclipse* create a new *Sirius Modeling Project* (*File -> New -> Other -> Sirius -> Modeling Project*)
+- Create a corresponding EMF model in that project (*File -> New ->  Other -> Example EMF Model Creation Wizards -> Graphical Model*)
+- Choose a file name and select the previously created (project) folder
+- Select **Interaction** as *Model Object*, then hit *Finish*
+- Open the *representations.aird* file, and in the *Representations* tab select the *Automaton Sequence Diagram* element (under *Interaction Modeling*)
+- Hit **New** -> select *Automaton Sequence Diagram* -> *Next* -> select *Interaction* -> *Finish* -> *Choose a name* 
+- Open the newly created representation
+- Happy Modeling ;)
+

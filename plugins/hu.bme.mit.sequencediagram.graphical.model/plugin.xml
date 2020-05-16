@@ -9,8 +9,8 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated graphical -->
       <package
-            uri="hu.bme.mit.sequencediagram.graphical"
-            class="graphical.GraphicalPackage"
+            uri="hu.bme.mit.sequencediagram.graphical.model"
+            class="model.GraphicalPackage"
             genModel="model/graphical.genmodel"/>
    </extension>
 

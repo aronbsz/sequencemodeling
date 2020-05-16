@@ -1,7 +1,13 @@
 package hu.bme.mit.sequencediagram.graphical.model.queries
 
-import "hu.bme.mit.sequencediagram.graphical"
+import "hu.bme.mit.sequencediagram.graphical.model"
 
 pattern interaction(i) {
 	Interaction(i);
+}
+
+pattern selfInvocation(message) {
+	Message.content(message, messageContent);
+	
+	name == "empty";
 }

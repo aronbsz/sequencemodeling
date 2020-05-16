@@ -2,6 +2,7 @@
   <extension id="hu.bme.mit.sequencediagram.graphical.model.queries.Queries" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.sequencediagram.graphical.model.queries.Queries" id="hu.bme.mit.sequencediagram.graphical.model.queries.Queries">
       <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.interaction"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.selfInvocation"/>
     </group>
   </extension>
 </plugin>

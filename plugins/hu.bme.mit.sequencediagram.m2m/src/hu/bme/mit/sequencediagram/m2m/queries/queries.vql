@@ -1,0 +1,41 @@
+package hu.bme.mit.sequencediagram.m2m.queries
+
+import "http://www.github.com/aronbsz/automatalearning" as lpt
+import "hu.bme.mit.sequencediagram.traceto.lpt" as trace
+import "hu.bme.mit.sequencediagram.graphical.model" as seqModel
+
+
+pattern traceOfElement(traceRoot: TraceRoot, trace: Trace, lptElement: lpt::LPTRootNode, seqElement: seqModel::Element){
+	TraceRoot.traces(traceRoot, trace);
+	Trace.lptelement(trace, lptElement);
+	Trace.seqelement(trace, seqElement);
+}
+
+//Is interaction already mapped
+pattern isInteractionMapped(
+	interaction: seqModel::Interaction
+){
+	 find traceOfElement(_, _, _, interaction);
+}
+
+//Interactions that do not use other interactions
+pattern isBaseInteraction(
+	interaction: seqModel::Interaction
+){
+	neg find isInteractionMapped(interaction);
+	neg Interaction.interactionUses(interaction, _);
+}
+
+pattern mapBasicEventMessages(
+	interaction: seqModel::Interaction, msg: seqModel::Message, src: seqModel::MessageEvent, trgt: seqModel::MessageEvent, content: seqModel::MessageContent
+){
+	//firstmessage
+	find isBaseInteraction(interaction);
+	Message.sourceEvent(msg, src);
+	Message.targetEvent(msg, trgt);
+	Message.content(msg, content);
+	Interaction.messages(interaction, msg);
+	neg find traceOfElement(_, _, _, msg);
+}
+
+

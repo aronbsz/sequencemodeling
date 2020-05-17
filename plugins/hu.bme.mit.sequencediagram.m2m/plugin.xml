@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension id="hu.bme.mit.sequencediagram.m2m.queries.Queries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.sequencediagram.m2m.queries.Queries" id="hu.bme.mit.sequencediagram.m2m.queries.Queries">
+      <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.traceOfElement"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.isInteractionMapped"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.isBaseInteraction"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.mapBasicEventMessages"/>
+    </group>
+  </extension>
+</plugin>

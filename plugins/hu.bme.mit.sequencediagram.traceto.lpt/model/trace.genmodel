@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/hu.bme.mit.sequencediagram.traceto.lpt.trace/src"
+    modelPluginID="hu.bme.mit.sequencediagram.traceto.lpt.trace" modelName="Trace"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="../../hu.bme.mit.sequencediagram.graphical.model/model/graphical.genmodel#//model ../../lpt/model/lpt.genmodel#//lpt"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>trace.ecore</foreignModel>
+  <genPackages prefix="Trace" disposableProviderFactory="true" ecorePackage="trace.ecore#/">
+    <genClasses ecoreClass="trace.ecore#//Trace">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference trace.ecore#//Trace/seqelement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference trace.ecore#//Trace/lptelement"/>
+    </genClasses>
+    <genClasses ecoreClass="trace.ecore#//TraceRoot">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference trace.ecore#//TraceRoot/traces"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference trace.ecore#//TraceRoot/seqRoot"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference trace.ecore#//TraceRoot/lptRoot"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

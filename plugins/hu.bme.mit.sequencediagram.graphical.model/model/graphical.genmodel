@@ -7,6 +7,7 @@
   <foreignModel>graphical.ecore</foreignModel>
   <genPackages prefix="Graphical" basePackage="hu.bme.mit.sequencediagram" disposableProviderFactory="true"
       ecorePackage="graphical.ecore#/">
+    <genClasses image="false" ecoreClass="graphical.ecore#//Element"/>
     <genClasses ecoreClass="graphical.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graphical.ecore#//NamedElement/name"/>
     </genClasses>

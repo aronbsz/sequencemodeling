@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="hu.bme.mit.sequencediagram.graphical.model" nsPrefix="hu.bme.mit.sequencediagram.graphical">
-  <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Element" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//NamedElement">
@@ -24,32 +25,32 @@
   <eClassifiers xsi:type="ecore:EClass" name="InputComponent" eSuperTypes="#//Component"/>
   <eClassifiers xsi:type="ecore:EClass" name="OutputComponent" eSuperTypes="#//Component"/>
   <eClassifiers xsi:type="ecore:EClass" name="SystemComponent" eSuperTypes="#//Component"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Message">
+  <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sourceEvent" eType="#//MessageEvent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targetEvent" eType="#//MessageEvent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//MessageContent"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MessageContent" eSuperTypes="#//NamedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="CombinedFragment" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="CombinedFragment" abstract="true" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EReference" name="operands" upperBound="-1"
         eType="#//Operand" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="startEvent" eType="#//CombinedFragmentEvent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="finishEvent" eType="#//CombinedFragmentEvent"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Operand">
+  <eClassifiers xsi:type="ecore:EClass" name="Operand" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="startEvent" eType="#//OperandEvent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AltFragment" eSuperTypes="#//CombinedFragment"/>
   <eClassifiers xsi:type="ecore:EClass" name="OptFragment" eSuperTypes="#//CombinedFragment"/>
-  <eClassifiers xsi:type="ecore:EClass" name="InteractionUse">
+  <eClassifiers xsi:type="ecore:EClass" name="InteractionUse" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="interactionName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="interaction" eType="#//Interaction"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="startEvent" eType="#//InteractionUseEvent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="finishEvent" eType="#//InteractionUseEvent"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Event" abstract="true">
+  <eClassifiers xsi:type="ecore:EClass" name="Event" abstract="true" eSuperTypes="#//Element">
     <eStructuralFeatures xsi:type="ecore:EReference" name="context" upperBound="-1"
         eType="#//Component"/>
   </eClassifiers>

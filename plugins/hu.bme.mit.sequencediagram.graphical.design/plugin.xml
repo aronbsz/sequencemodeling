@@ -7,4 +7,11 @@
 	       name="graphical">
     </component>
   </extension>
+  <extension
+        point="org.eclipse.sirius.externalJavaAction">
+     <javaActions
+           actionClass="hu.bme.mit.sequencediagram.graphical.design.UpdateMessageContent"
+           id="hu.bme.mit.sequencediagram.graphical.design.updateMessageContent">
+     </javaActions>
+  </extension>
 </plugin>

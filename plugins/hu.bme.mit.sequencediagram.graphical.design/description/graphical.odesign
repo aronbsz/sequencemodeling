@@ -158,6 +158,10 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer(model::Interaction)">
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
+                  <parameters name="title" value="Message Creation"/>
+                  <parameters name="enabled" value="aql:false"/>
+                </subModelOperations>
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.Message" referenceName="messages" variableName="message">
                   <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:message">
                     <subModelOperations xsi:type="tool_1:CreateInstance" typeName="model.MessageContent" referenceName="content" variableName="messageContent"/>
@@ -186,6 +190,9 @@
                   <parameters name="referenceName" value="events"/>
                   <parameters name="element" value="var:receivingEvent"/>
                   <parameters name="predecessor" value="aql:finishingEndPredecessor.semanticEnd"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="maintainEventOrder" id="hu.bme.mit.sequencediagram.graphical.design.maintainEventOrder">
+                  <parameters name="events" value="feature:events"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -433,8 +440,10 @@
       </defaultLayer>
       <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="hu.bme.mit.sequencediagram.graphical.design.Services"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.business.api.action.moveElement"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.business.api.action.printVariables"/>
+    <ownedJavaExtensions qualifiedClassName="hu.bme.mit.sequencediagram.graphical.design.Services"/>
     <ownedJavaExtensions qualifiedClassName="hu.bme.mit.sequencediagram.graphical.design.updateMessageContent"/>
+    <ownedJavaExtensions qualifiedClassName="hu.bme.mit.sequencediagram.graphical.design.maintainEventOrder"/>
   </ownedViewpoints>
 </description:Group>

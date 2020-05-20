@@ -13,5 +13,9 @@
            actionClass="hu.bme.mit.sequencediagram.graphical.design.UpdateMessageContent"
            id="hu.bme.mit.sequencediagram.graphical.design.updateMessageContent">
      </javaActions>
+     <javaActions
+           actionClass="hu.bme.mit.sequencediagram.graphical.design.MaintainEventOrder"
+           id="hu.bme.mit.sequencediagram.graphical.design.maintainEventOrder">
+     </javaActions>
   </extension>
 </plugin>

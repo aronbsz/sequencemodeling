@@ -30,7 +30,9 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/targetEvent"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//Message/content"/>
     </genClasses>
-    <genClasses ecoreClass="graphical.ecore#//MessageContent"/>
+    <genClasses ecoreClass="graphical.ecore#//MessageContent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute graphical.ecore#//MessageContent/interface"/>
+    </genClasses>
     <genClasses ecoreClass="graphical.ecore#//CombinedFragment">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference graphical.ecore#//CombinedFragment/operands"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference graphical.ecore#//CombinedFragment/startEvent"/>

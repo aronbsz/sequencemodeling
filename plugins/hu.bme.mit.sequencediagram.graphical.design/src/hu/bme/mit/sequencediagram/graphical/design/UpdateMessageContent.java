@@ -12,8 +12,8 @@ import hu.bme.mit.sequencediagram.model.MessageContent;
 
 public class UpdateMessageContent implements IExternalJavaAction {
 	
-	private final static String PARAM1 = "targetMessage";
-	private final static String PARAM2 = "newContent";
+	private final static String targetMessage = "message";
+	private final static String newContents = "content";
 
 	public UpdateMessageContent() {
 
@@ -21,11 +21,21 @@ public class UpdateMessageContent implements IExternalJavaAction {
 
 	@Override
 	public void execute(Collection<? extends EObject> selections, Map<String, Object> parameters) {
-		Message toUpdate = (Message)parameters.get(PARAM1);
-		String newContent = (String)parameters.get(PARAM2);
-		
+		Message toUpdate = (Message)parameters.get(targetMessage);
+		//System.out.println("Message: " + toUpdate);
+		String[] splitContents;
+		String contents = (String)parameters.get(newContents);
+		//System.out.println("Contents: " + contents);
+		splitContents = contents.split("\\.");
+		//System.out.println("Split: " + splitContents + ", length: " + splitContents.length);
 		MessageContent messageContent = GraphicalFactory.eINSTANCE.createMessageContent();
-		messageContent.setName(newContent);
+		if(splitContents.length < 2) {	//not qualified with interface
+			messageContent.setName(splitContents[0]);
+		} else { //qualified with interface 
+			messageContent.setInterface(splitContents[0]);
+			messageContent.setName(splitContents[1]);
+		}
+		
 		toUpdate.setContent(messageContent);
 	}
 

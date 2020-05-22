@@ -30,6 +30,12 @@
       <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.notSupportedReflectiveMessage"/>
     </group>
   </extension>
+  <extension id="hu.bme.mit.sequencediagram.graphical.model.queries.MessageQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.sequencediagram.graphical.model.queries.MessageQueries" id="hu.bme.mit.sequencediagram.graphical.model.queries.MessageQueries">
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.unnamedMessage"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.missingMessageInterface"/>
+    </group>
+  </extension>
   <extension id="hu.bme.mit.sequencediagram.graphical.model.queries.ModelQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.sequencediagram.graphical.model.queries.ModelQueries" id="hu.bme.mit.sequencediagram.graphical.model.queries.ModelQueries">
       <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.unnamedModel"/>

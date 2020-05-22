@@ -58,7 +58,10 @@
         <edgeMappings xsi:type="description_1:BasicMessageMapping" name="Message" label=": Message" labelDirectEdit="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@toolSections.3/@ownedTools[name='EditMessageLabel']" semanticCandidatesExpression="feature:messages" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='InputComponent']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='SystemComponent']/@borderedNodeMappings[name='Lifeline']" targetMapping="//@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='OutputComponent']/@borderedNodeMappings[name='Lifeline'] //@ownedViewpoints[name='InteractionModeling']/@ownedRepresentations[name='AutomatonSequenceDiagram']/@defaultLayer/@nodeMappings[name='SystemComponent']/@borderedNodeMappings[name='Lifeline']" targetFinderExpression="aql:self.targetEvent.context" sourceFinderExpression="aql:self.sourceEvent.context" domainClass="model.Message" useDomainElement="true" sendingEndFinderExpression="feature:sourceEvent" receivingEndFinderExpression="feature:targetEvent">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="service:createMessageLabel">
+            <beginLabelStyleDescription labelExpression="aql:if self.content.interface != null then self.content.interface else '(empty)' endif">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:if self.content.name != null then self.content.name else '(empty)' endif">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -157,7 +160,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer(model::Interaction)">
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:source.eContainer()">
                 <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Show variables" id="org.eclipse.sirius.business.api.action.printVariables">
                   <parameters name="title" value="Message Creation"/>
                   <parameters name="enabled" value="aql:false"/>
@@ -440,8 +443,8 @@
       </defaultLayer>
       <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.business.api.action.moveElement"/>
-    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.business.api.action.printVariables"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.business.api.action.MoveElementInListAction"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.business.api.action.PrintInterpreterVariablesAction"/>
     <ownedJavaExtensions qualifiedClassName="hu.bme.mit.sequencediagram.graphical.design.Services"/>
     <ownedJavaExtensions qualifiedClassName="hu.bme.mit.sequencediagram.graphical.design.UpdateMessageContent"/>
     <ownedJavaExtensions qualifiedClassName="hu.bme.mit.sequencediagram.graphical.design.MaintainEventOrder"/>

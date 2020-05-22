@@ -7,7 +7,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TraceRoot">
     <eStructuralFeatures xsi:type="ecore:EReference" name="traces" upperBound="-1"
-        eType="#//Trace"/>
+        eType="#//Trace" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="seqRoot" eType="ecore:EClass ../../hu.bme.mit.sequencediagram.graphical.model/model/graphical.ecore#//Model"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="lptRoot" eType="ecore:EClass ../../lpt/model/lpt.ecore#//LPTRootNode"/>
   </eClassifiers>

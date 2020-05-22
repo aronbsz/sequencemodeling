@@ -112,7 +112,7 @@ public interface TracePackage extends EPackage {
 	int TRACE_ROOT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Traces</b></em>' reference list.
+	 * The feature id for the '<em><b>Traces</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -200,10 +200,10 @@ public interface TracePackage extends EPackage {
 	EClass getTraceRoot();
 
 	/**
-	 * Returns the meta object for the reference list '{@link trace.TraceRoot#getTraces <em>Traces</em>}'.
+	 * Returns the meta object for the containment reference list '{@link trace.TraceRoot#getTraces <em>Traces</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Traces</em>'.
+	 * @return the meta object for the containment reference list '<em>Traces</em>'.
 	 * @see trace.TraceRoot#getTraces()
 	 * @see #getTraceRoot()
 	 * @generated
@@ -292,7 +292,7 @@ public interface TracePackage extends EPackage {
 		EClass TRACE_ROOT = eINSTANCE.getTraceRoot();
 
 		/**
-		 * The meta object literal for the '<em><b>Traces</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Traces</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

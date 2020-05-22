@@ -30,13 +30,13 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface TraceRoot extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Traces</b></em>' reference list.
+	 * Returns the value of the '<em><b>Traces</b></em>' containment reference list.
 	 * The list contents are of type {@link trace.Trace}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Traces</em>' reference list.
+	 * @return the value of the '<em>Traces</em>' containment reference list.
 	 * @see trace.TracePackage#getTraceRoot_Traces()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Trace> getTraces();

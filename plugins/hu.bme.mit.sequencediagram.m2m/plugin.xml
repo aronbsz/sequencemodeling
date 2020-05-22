@@ -4,7 +4,9 @@
       <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.traceOfElement"/>
       <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.isInteractionMapped"/>
       <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.isBaseInteraction"/>
-      <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.mapBasicEventMessages"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.baseInteractionMessageEvents"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.mapBaseMessage"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.m2m.queries.mapBaseSrcToTargetMessages"/>
     </group>
   </extension>
 </plugin>

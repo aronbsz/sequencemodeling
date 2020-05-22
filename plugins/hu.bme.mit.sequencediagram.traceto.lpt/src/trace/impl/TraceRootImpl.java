@@ -10,6 +10,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -18,8 +19,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 import trace.Trace;
 import trace.TracePackage;
 import trace.TraceRoot;
@@ -41,7 +42,7 @@ import trace.TraceRoot;
  */
 public class TraceRootImpl extends MinimalEObjectImpl.Container implements TraceRoot {
 	/**
-	 * The cached value of the '{@link #getTraces() <em>Traces</em>}' reference list.
+	 * The cached value of the '{@link #getTraces() <em>Traces</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTraces()
@@ -96,7 +97,7 @@ public class TraceRootImpl extends MinimalEObjectImpl.Container implements Trace
 	 */
 	public EList<Trace> getTraces() {
 		if (traces == null) {
-			traces = new EObjectResolvingEList<Trace>(Trace.class, this, TracePackage.TRACE_ROOT__TRACES);
+			traces = new EObjectContainmentEList<Trace>(Trace.class, this, TracePackage.TRACE_ROOT__TRACES);
 		}
 		return traces;
 	}
@@ -175,6 +176,20 @@ public class TraceRootImpl extends MinimalEObjectImpl.Container implements Trace
 		lptRoot = newLptRoot;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TracePackage.TRACE_ROOT__LPT_ROOT, oldLptRoot, lptRoot));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case TracePackage.TRACE_ROOT__TRACES:
+				return ((InternalEList<?>)getTraces()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

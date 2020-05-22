@@ -4,6 +4,7 @@ import "http://www.github.com/aronbsz/automatalearning" as lpt
 import "hu.bme.mit.sequencediagram.traceto.lpt" as trace
 import "hu.bme.mit.sequencediagram.graphical.model" as seqModel
 
+import java ^java.util.List
 
 pattern traceOfElement(traceRoot: TraceRoot, trace: Trace, lptElement: lpt::LPTRootNode, seqElement: seqModel::Element){
 	TraceRoot.traces(traceRoot, trace);
@@ -26,16 +27,40 @@ pattern isBaseInteraction(
 	neg Interaction.interactionUses(interaction, _);
 }
 
-pattern mapBasicEventMessages(
+pattern baseInteractionMessageEvents(
+	interaction: seqModel::Interaction, event: seqModel::MessageEvent, msg: seqModel::Message
+){
+	find isBaseInteraction(interaction);
+	neg find traceOfElement(_,_,_,event); //hasn't been handled yet
+	Message.sourceEvent(msg,event);
+	Interaction.events(interaction, event);
+}
+
+
+pattern mapBaseMessage(
 	interaction: seqModel::Interaction, msg: seqModel::Message, src: seqModel::MessageEvent, trgt: seqModel::MessageEvent, content: seqModel::MessageContent
 ){
-	//firstmessage
 	find isBaseInteraction(interaction);
 	Message.sourceEvent(msg, src);
 	Message.targetEvent(msg, trgt);
 	Message.content(msg, content);
 	Interaction.messages(interaction, msg);
 	neg find traceOfElement(_, _, _, msg);
+}
+
+pattern mapBaseSrcToTargetMessages(
+	interaction: seqModel::Interaction, 
+	msg1: seqModel::Message, src1: seqModel::MessageEvent, trgt1: seqModel::MessageEvent, content1: seqModel::MessageContent, //source message
+	msg2: seqModel::Message, src2: seqModel::MessageEvent, trgt2: seqModel::MessageEvent, content2: seqModel::MessageContent  //target message
+){
+	//nonreflective
+	src1 != trgt1;
+	src2 != trgt2;
+	//target right after source
+	find mapBaseMessage(interaction, msg1, src1, trgt1, content1);
+	find mapBaseMessage(interaction, msg2, src2, trgt2, content2);
+	trgt1 == src2; //1)to make sure they are in-out 2) this prevents msg1 = msg2
+	//eval(CommonHelperMethods::getIndexOf(interaction.events, src1))
 }
 
 

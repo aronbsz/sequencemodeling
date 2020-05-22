@@ -34,7 +34,6 @@ class RuleSetBase {
 		this.engine = engine;
 		this.manipulation = manipulation
 		this.traceRoot = traceRoot
-		
 		this.tracingHelper = new TracingHelperUtility(manipulation, traceRoot)
 	}
 	

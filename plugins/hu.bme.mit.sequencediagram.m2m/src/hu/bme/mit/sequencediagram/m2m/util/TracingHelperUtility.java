@@ -5,6 +5,7 @@ import org.eclipse.viatra.transformation.runtime.emf.modelmanipulation.IModelMan
 import org.eclipse.viatra.transformation.runtime.emf.modelmanipulation.ModelManipulationException;
 
 import hu.bme.mit.lpt.LPTRootNode;
+import hu.bme.mit.sequencediagram.model.Element;
 import trace.Trace;
 import trace.TracePackage;
 import trace.TraceRoot;
@@ -33,7 +34,7 @@ public class TracingHelperUtility {
 		); 
 	}
 	
-	public void createTrace(EObject seqElement,
+	public void createTrace(Element seqElement,
 			LPTRootNode lptElement)
 			throws ModelManipulationException {
 		
@@ -42,6 +43,15 @@ public class TracingHelperUtility {
 		manipulation.set(trace, tracePackage.getTrace_Lptelement(), lptElement);
 		logTraceOp(trace, true);
 	}
+	
+	public boolean inAnyTrace(Element element) {
+		if(rootTrace.getSeqRoot() == element) return true;
+		for(Trace t : rootTrace.getTraces()) {
+			if(t.getSeqelement() == element) return true;
+		}
+		return false;	
+	}
+	
 
 	public void deleteTraceAndTarget(Trace trace) throws ModelManipulationException {
 		if (trace != null) {

@@ -1,0 +1,15 @@
+package hu.bme.mit.sequencediagram.graphical.model.queries
+
+import "hu.bme.mit.sequencediagram.graphical.model" as model
+
+@Constraint(
+	key = {component},
+	severity = "warning",
+	message = "Component name must be specified.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern singleOperandAltFragment(component : Component) {
+	Component.name(component, "");
+} or {
+	neg Component.name(component, _);
+}

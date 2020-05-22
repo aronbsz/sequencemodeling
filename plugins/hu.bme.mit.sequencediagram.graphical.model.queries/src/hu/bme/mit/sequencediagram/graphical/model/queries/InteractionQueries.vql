@@ -1,0 +1,155 @@
+package hu.bme.mit.sequencediagram.graphical.model.queries
+
+import "hu.bme.mit.sequencediagram.graphical.model" as model
+
+@Constraint(
+	key = {interaction},
+	severity = "error",
+	message = "Interaction name must be specified.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern unnamedInteraction(interaction : Interaction) {
+	Interaction.name(interaction, "");
+} or {
+	neg Interaction.name(interaction, _);
+}
+
+@Constraint(
+	key = {component},
+	severity = "error",
+	message = "Component names of the same interaction must be unique.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern ambiguousComponentName(component : Component, name : java String) {
+	sameNamedComponents == count Component.name(component, name);
+	check(sameNamedComponents > 1);
+}
+
+@Constraint(
+	key = {interaction},
+	severity = "error",
+	message = "Interactions must have an input component.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern interactionInputComponentMissing(interaction : Interaction) {
+	inputComponents == count find inputComponents(interaction, _ic);
+	check(inputComponents < 1);
+}
+
+@Constraint(
+	key = {interaction},
+	severity = "error",
+	message = "Interactions must have at most one input component.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern interactionMultipleInputComponents(interaction : Interaction) {
+	inputComponents == count find inputComponents(interaction, _ic);
+	check(inputComponents > 1);
+}
+
+pattern inputComponents(interaction : Interaction, ic : InputComponent){
+	Interaction.components(interaction, ic);
+}
+
+@Constraint(
+	key = {interaction},
+	severity = "error",
+	message = "Interactions must have a system component.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern interactionSystemComponentMissing(interaction : Interaction) {
+	systemComponents == count find systemComponents(interaction, _sc);
+	check(systemComponents < 1);
+}
+
+@Constraint(
+	key = {interaction},
+	severity = "error",
+	message = "Interactions must have at most one system component.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern interactionMultipleSystemComponents(interaction : Interaction) {
+	systemComponents == count find systemComponents(interaction, _sc);
+	check(systemComponents > 1);
+}
+
+pattern systemComponents(interaction : Interaction, sc : SystemComponent){
+	Interaction.components(interaction, sc);
+}
+
+@Constraint(
+	key = {interaction},
+	severity = "error",
+	message = "Interactions must have an output component.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern interactionOutputComponentMissing(interaction : Interaction) {
+	outputComponents == count find outputComponents(interaction, _oc);
+	check(outputComponents < 1);
+}
+
+@Constraint(
+	key = {interaction},
+	severity = "error",
+	message = "Interactions must have at most one output component.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern interactionMultipleOutputComponents(interaction : Interaction) {
+	outputComponents == count find outputComponents(interaction, _oc);
+	check(outputComponents > 1);
+}
+
+pattern outputComponents(interaction : Interaction, oc : SystemComponent) {
+	Interaction.components(interaction, oc);
+}
+
+@Constraint(
+	key = {message},
+	severity = "error",
+	message = "Message not allowed between the given source and target.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern invalidMessage(message : Message) {
+	neg find validMessage(message);
+}
+
+pattern validMessage(message : Message) {
+	find inSysMessage(message, _, _);
+} or {
+	find sysSysMessage(message, _, _);
+} or {
+	find sysOutMessage(message, _, _);
+}
+
+pattern inSysMessage(message : Message, inputComponent : InputComponent, systemComponent : SystemComponent) {
+	Message.sourceEvent(message, src);
+	Event.context(src, inputComponent);
+	Message.targetEvent(message, trgt);
+	Event.context(trgt, systemComponent);
+}
+
+pattern sysSysMessage(message : Message, systemComponent1 : SystemComponent, systemComponent2 : SystemComponent) {
+	Message.sourceEvent(message, src);
+	Event.context(src, systemComponent1);
+	Message.targetEvent(message, trgt);
+	Event.context(trgt, systemComponent2);	
+}
+
+pattern sysOutMessage(message : Message, systemComponent : SystemComponent, outputComponent : OutputComponent) {
+	Message.sourceEvent(message, src);
+	Event.context(src, systemComponent);
+	Message.targetEvent(message, trgt);
+	Event.context(trgt, outputComponent);	
+}
+
+@Constraint(
+	key = {message},
+	severity = "error",
+	message = "System component reflective messages are currently not supported.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern notSupportedReflectiveMessage(message : Message) {
+	find sysSysMessage(message, _, _);
+}
+
+// TODO IU not last

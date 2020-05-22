@@ -1,8 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?><plugin>
-  <extension id="hu.bme.mit.sequencediagram.graphical.model.queries.Queries" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.sequencediagram.graphical.model.queries.Queries" id="hu.bme.mit.sequencediagram.graphical.model.queries.Queries">
-      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.interaction"/>
-      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.selfInvocation"/>
+<?xml version="1.0" encoding="UTF-8"?><?eclipse version="3.0"?><plugin>
+  <extension id="hu.bme.mit.sequencediagram.graphical.model.queries.AltFragmentQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.sequencediagram.graphical.model.queries.AltFragmentQueries" id="hu.bme.mit.sequencediagram.graphical.model.queries.AltFragmentQueries">
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.unnamedComponent"/>
+    </group>
+  </extension>
+  <extension id="hu.bme.mit.sequencediagram.graphical.model.queries.ComponentQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.sequencediagram.graphical.model.queries.ComponentQueries" id="hu.bme.mit.sequencediagram.graphical.model.queries.ComponentQueries">
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.singleOperandAltFragment"/>
+    </group>
+  </extension>
+  <extension id="hu.bme.mit.sequencediagram.graphical.model.queries.InteractionQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.sequencediagram.graphical.model.queries.InteractionQueries" id="hu.bme.mit.sequencediagram.graphical.model.queries.InteractionQueries">
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.unnamedInteraction"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.ambiguousComponentName"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.interactionInputComponentMissing"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.interactionMultipleInputComponents"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.inputComponents"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.interactionSystemComponentMissing"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.interactionMultipleSystemComponents"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.systemComponents"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.interactionOutputComponentMissing"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.interactionMultipleOutputComponents"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.outputComponents"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.invalidMessage"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.validMessage"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.inSysMessage"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.sysSysMessage"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.sysOutMessage"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.notSupportedReflectiveMessage"/>
+    </group>
+  </extension>
+  <extension id="hu.bme.mit.sequencediagram.graphical.model.queries.ModelQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.sequencediagram.graphical.model.queries.ModelQueries" id="hu.bme.mit.sequencediagram.graphical.model.queries.ModelQueries">
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.unnamedModel"/>
+      <query-specification fqn="hu.bme.mit.sequencediagram.graphical.model.queries.ambiguousInteractionName"/>
     </group>
   </extension>
 </plugin>

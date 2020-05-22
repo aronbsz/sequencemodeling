@@ -1,0 +1,14 @@
+package hu.bme.mit.sequencediagram.graphical.model.queries
+
+import "hu.bme.mit.sequencediagram.graphical.model" as model
+
+@Constraint(
+	key = {altFragment},
+	severity = "warning",
+	message = "Alt fragments should have multiple operands.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern unnamedComponent(altFragment : AltFragment) {
+	numberOfOperands == count AltFragment.operands(altFragment, _);
+	check(numberOfOperands <= 1);
+}

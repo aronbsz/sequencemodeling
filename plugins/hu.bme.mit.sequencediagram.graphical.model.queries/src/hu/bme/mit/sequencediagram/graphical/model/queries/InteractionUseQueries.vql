@@ -1,0 +1,7 @@
+package hu.bme.mit.sequencediagram.graphical.model.queries
+
+import "hu.bme.mit.sequencediagram.graphical.model" as model
+
+//no name
+
+//no interaction (if name exists)

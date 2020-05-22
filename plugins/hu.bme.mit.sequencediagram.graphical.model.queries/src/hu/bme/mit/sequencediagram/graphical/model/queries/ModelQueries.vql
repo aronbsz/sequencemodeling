@@ -1,0 +1,26 @@
+package hu.bme.mit.sequencediagram.graphical.model.queries
+
+import "hu.bme.mit.sequencediagram.graphical.model" as model
+
+@Constraint(
+	key = {model},
+	severity = "warning",
+	message = "Model name should be specified.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern unnamedModel(model : Model) {
+	Model.name(model, "");
+} or {
+	neg Model.name(model, _);
+}
+
+@Constraint(
+	key = {interaction},
+	severity = "error",
+	message = "Interaction names of the same model must be unique.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern ambiguousInteractionName(interaction : Interaction, name : java String) {
+	sameNamedInteractions == count Interaction.name(interaction, name);
+	check(sameNamedInteractions > 1);
+}

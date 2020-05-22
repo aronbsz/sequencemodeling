@@ -1,0 +1,31 @@
+package hu.bme.mit.sequencediagram.graphical.model.queries
+
+import "hu.bme.mit.sequencediagram.graphical.model" as model
+
+@Constraint(
+	key = {message},
+	severity = "error",
+	message = "Message name must be specified.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern unnamedMessage(message : Message) {
+	Message.content(message, messageContent);
+	MessageContent.name(messageContent, "");
+} or {
+	Message.content(message, messageContent);
+	neg MessageContent.name(messageContent, _);
+}
+
+@Constraint(
+	key = {message},
+	severity = "warning",
+	message = "Message interface should be specified.",
+	targetEditorId = "hu.bme.mit.sequencediagram.model.presentation.GraphicalEditorID"
+)
+pattern missingMessageInterface(message : Message) {
+	Message.content(message, messageContent);
+	MessageContent.interface(messageContent, "");
+} or {
+	Message.content(message, messageContent);
+	neg MessageContent.interface(messageContent, _);
+}

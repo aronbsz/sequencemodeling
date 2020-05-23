@@ -36,7 +36,7 @@ public class TransformHandler extends AbstractHandler implements IHandler {
             }
         }
         transformation.execute();
-
+        //transformation.dispose();
         return null;
     }
 

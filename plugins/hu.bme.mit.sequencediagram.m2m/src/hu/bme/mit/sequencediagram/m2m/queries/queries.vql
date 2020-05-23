@@ -4,7 +4,7 @@ import "http://www.github.com/aronbsz/automatalearning" as lpt
 import "hu.bme.mit.sequencediagram.traceto.lpt" as trace
 import "hu.bme.mit.sequencediagram.graphical.model" as seqModel
 
-import java ^java.util.List
+import "http://www.eclipse.org/emf/2002/Ecore"
 
 pattern traceOfElement(traceRoot: TraceRoot, trace: Trace, lptElement: lpt::LPTRootNode, seqElement: seqModel::Element){
 	TraceRoot.traces(traceRoot, trace);
@@ -19,15 +19,75 @@ pattern isInteractionMapped(
 	 find traceOfElement(_, _, _, interaction);
 }
 
+pattern isUnmappedInteraction(
+	interaction: seqModel::Interaction
+){
+	neg find isInteractionMapped(interaction);
+}
+
 //Interactions that do not use other interactions
 pattern isBaseInteraction(
 	interaction: seqModel::Interaction
 ){
-	neg find isInteractionMapped(interaction);
 	neg Interaction.interactionUses(interaction, _);
 }
 
-pattern baseInteractionMessageEvents(
+pattern isNotBaseInteraction(
+	interaction: seqModel::Interaction
+){
+	neg find isBaseInteraction(interaction);
+}
+
+pattern isMappedWithInteractionUse(
+	interaction1: seqModel::Interaction, interaction2: seqModel::Interaction, use: seqModel::InteractionUse
+){
+	InteractionUse.interaction(use, interaction2);
+	Interaction.interactionUses(interaction1, use);
+}
+
+pattern isChild(M: lpt::LPTRootNode, K, V) {
+  	LPTRootNode(M);
+    LPTRootNode.children(M, Map);
+    EStringToLPTRootNodeMap.key(Map, K);
+    EStringToLPTRootNodeMap.value(Map, V);
+  }
+
+
+
+pattern mapInteractionUseInteractionToRoot(
+	interaction: seqModel::Interaction, message: seqModel::Message, leaf: lpt::LPTUnloopedNode, ancestor: lpt::LPTRootNode
+){
+	//Interaction has InteractionUse, but it does not point anywhere
+	neg find isBaseInteraction(interaction);
+	neg find isMappedWithInteractionUse(interaction, _, _);
+	//leaf actually is a leaf
+	neg find isChild(leaf, _, _);
+	//leaf is connected to a message of this interaction
+	Interaction.messages(interaction, message);
+	find traceOfElement(_,_,leaf,message);
+	//ancestor is leafs parent
+	find isChild(ancestor, _, leaf);
+}
+
+
+pattern mapInteractionUseInteractionToNode(
+	interaction: seqModel::Interaction, interactionUse: seqModel::InteractionUse,  message: seqModel::Message, leaf: lpt::LPTUnloopedNode, ancestor: lpt::LPTRootNode
+){
+	//Interaction has InteractionUse, and points to an interaction without a trace
+	neg find isBaseInteraction(interaction);
+	find isMappedWithInteractionUse(interaction, _, interactionUse);
+	neg find traceOfElement(_,_,_,interactionUse);
+	//leaf actually is a leaf
+	neg find isChild(leaf, _, _);
+	//leaf is connected to a message of this interaction
+	Interaction.messages(interaction, message);
+	find traceOfElement(_,_,leaf,message);
+	//ancestor is leafs parent
+	find isChild(ancestor, _, leaf);
+}
+
+
+/*pattern baseInteractionMessageEvents(
 	interaction: seqModel::Interaction, event: seqModel::MessageEvent, msg: seqModel::Message
 ){
 	find isBaseInteraction(interaction);
@@ -61,6 +121,6 @@ pattern mapBaseSrcToTargetMessages(
 	find mapBaseMessage(interaction, msg2, src2, trgt2, content2);
 	trgt1 == src2; //1)to make sure they are in-out 2) this prevents msg1 = msg2
 	//eval(CommonHelperMethods::getIndexOf(interaction.events, src1))
-}
+}*/
 
 

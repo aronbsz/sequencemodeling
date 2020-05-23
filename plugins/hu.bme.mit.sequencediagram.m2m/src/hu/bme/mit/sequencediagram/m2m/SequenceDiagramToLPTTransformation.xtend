@@ -17,6 +17,15 @@ import hu.bme.mit.sequencediagram.m2m.queries.Queries
 import trace.TracePackage
 import hu.bme.mit.lpt.LptPackage
 import trace.TraceRoot
+import java.util.Collections
+import org.eclipse.emf.common.util.URI
+import java.util.List
+import java.util.ArrayList
+import java.util.Arrays
+import hu.bme.mit.lpt.LPTUnloopedNode
+import java.util.HashSet
+import hu.bme.mit.lpt.LPTLoopedNode
+import java.util.Set
 
 class SequenceDiagramToLPTTransformation {
 	
@@ -75,7 +84,7 @@ class SequenceDiagramToLPTTransformation {
 			traceRoot.set(tracePackage.traceRoot_LptRoot, lpt)
 		}
 		if(traceRoot.seqRoot === null){
-			traceRoot.set(tracePackage.traceRoot_LptRoot, lpt)
+			traceRoot.set(tracePackage.traceRoot_SeqRoot, seqModel)
 		}
 		
 		ruleSet = new SeqenceDiagramToLPTRuleSet(engine, manipulation, traceRoot)
@@ -85,9 +94,41 @@ class SequenceDiagramToLPTTransformation {
 
     public def execute() {
 		println("Starting transformation")
-		transformation.transformationRuleGroup.fireAllCurrent
-
+		for(BatchTransformationRule r : ruleSet.getRules){
+			r.fireAllCurrent;
+		}
+		saveGenFiles()
+		prettyPrintResult(traceRoot.lptRoot)
     }
+    private Set<LPTLoopedNode> visited = new HashSet
+    private def prettyPrintResult(LPTRootNode n){
+    	if(n.children.isEmpty())return;
+		System.out.println(n)
+    	n.children.forEach[Entry | System.out.println("\t-> " + Entry.value + ": In: " + Entry.key + " Out: " + (Entry.value as LPTUnloopedNode).output + (Entry.value instanceof LPTLoopedNode ? " LoopTo: " + (Entry.value as LPTLoopedNode).loop : ""))]
+        n.children.forEach[Entry | prettyPrintResult(Entry.value)]
+        
+        return;
+    }
+    
+    private def saveGenFiles(){
+    	var List<Resource> toSave = new ArrayList
+    	for(var i = 0; i < 3; i++){
+    		var r = resSet.getResources().get(i);
+    		if(!r.URI.toString.contains("graphical")){
+    			var arr = r.URI.toString.split("/")
+    			var String uri = ""
+    			for(var int j = 2; j < arr.length-1; j++){
+    				uri += arr.get(j) + "/";
+    			}
+    			uri += "gen-"
+    			uri += arr.get(arr.length-1)
+    			var Resource resource = resSet.createResource(URI.createPlatformResourceURI(uri, true));
+	    		resource.getContents().addAll(r.getContents());
+	    		resource.save(Collections.EMPTY_MAP)
+    		}
+    	}    	
+    }
+    
 
     private def createTransformation() {
         //Create VIATRA model manipulations

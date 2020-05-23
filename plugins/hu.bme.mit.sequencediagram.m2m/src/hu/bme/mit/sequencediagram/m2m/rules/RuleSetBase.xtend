@@ -41,6 +41,10 @@ class RuleSetBase {
 		new BatchTransformationRuleGroup(rulesInternal)
 	}
 	
+	def getRules(){
+		return rulesInternal
+	}
+	
 	private def logExecution(IPatternMatch match, String ruleName) {
 		println('''«ruleName» («match.prettyPrint»)''')
 	}

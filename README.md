@@ -27,3 +27,11 @@ Pro tip: delete the generated files and folders before re-generating them.
 - You can create representations for each Interaction, but not the Model itself (that represents the system modeled through all the sequence diagrams)
 - Each sequence diagram has a node (initially in the top left corner) that represents the diagram itself. You can change its name through this element but should not delete it.
 - *Interactions* can refer to (use) other interactions under the same *Model* element using their names in *Interaction Use* elements.
+
+### M2M Setup
+- Prerequisites: "hu.bme.mit.sequencediagram.graphical", "hu.bme.mit.sequencediagram.traceto.lpt.trace" and "hu.bme.mit.automatalearning.lpt" should all have their *Model*, *Edit* and *Editor* codes generated.
+- Run hu.bme.mit.sequencediagram.m2m in eclipse runtime (*Run*->*Eclipse application*)
+- Follow the instruction seen in *Example Model Setup* to create sequences. Once done, create a new resource project, and copy the .graphical file (the root of which should be a *Model* object) into its directory.
+- Create and empty Trace (root: TraceRoot) and LPT (root: LPTRootNode) file in the same resource project.
+- Open the *.graphical* file, on the Model object: *Right click*->*Transform*. The same resource project should have a new, <name>-gen.lpt generated file containing the output.
+ - Happy transforming! =)

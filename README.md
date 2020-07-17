@@ -1,4 +1,9 @@
 ﻿## Sequence Diagram Formalism for Modeling the Behavior of Automata
+ 
+ Example of a sequence diagram seen in the editing tool:
+ 
+ ![alt text](https://github.com/aronbsz/sequencemodeling/blob/master/pic_example.png?raw=true)
+ 
 ### Plugin Setup
 - Clone the repo
 - Import the projects in the */plugins* folder into eclipse
